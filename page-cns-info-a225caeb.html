@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏体育 · 日常导航与说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fcedda 0%, #f9d9b0 70%, #f5c894 100%);
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2e241e;
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 0.9rem 1.6rem;
+      border-radius: 60px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 6px 18px rgba(160, 100, 40, 0.10);
+    }
+
+    .logo-area {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      color: #764e2a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4d3423;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #b0764a;
+      color: #2d1e14;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #fffffffa;
+      border-radius: 28px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 8px 30px rgba(140, 80, 30, 0.08);
+      margin-bottom: 2rem;
+      transition: box-shadow 0.25s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 34px rgba(120, 70, 20, 0.12);
+    }
+
+    /* hero / 引言 */
+    .hero {
+      text-align: center;
+      padding: 2.2rem 1.5rem 1.8rem;
+      background: #fffffffa;
+      border-radius: 36px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #4a3121;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin: 0.4rem auto;
+      color: #4f3b2b;
+    }
+
+    .hero .intro-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: #e6c9ae;
+      color: #2c1f15;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .hero .intro-link:hover {
+      background: #ddb692;
+      transform: scale(1.02);
+    }
+
+    /* 场景三模块网格 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 820px) {
+      .scenes-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+      .top-nav {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: stretch;
+        text-align: center;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    .scene-card {
+      background: #fffffffa;
+      border-radius: 26px;
+      padding: 1.8rem 1.4rem 1.6rem;
+      box-shadow: 0 6px 22px rgba(130, 70, 30, 0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(110, 60, 20, 0.10);
+    }
+
+    .scene-card h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #5d3f29;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .scene-card p {
+      color: #3e2d20;
+      margin-bottom: 0.6rem;
+    }
+
+    .scene-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.6rem 0 0.2rem;
+    }
+
+    .scene-card li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+      color: #3b2b1e;
+    }
+
+    .scene-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #b1794c;
+      font-weight: bold;
+    }
+
+    .scene-card a {
+      color: #7a4f2d;
+      text-decoration: underline wavy #dbba9a 1px;
+      text-underline-offset: 3px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .scene-card a:hover {
+      color: #3f281a;
+      text-decoration-color: #956b42;
+    }
+
+    /* 常见说明区域 */
+    .faq-summary {
+      background: #fffffffa;
+      border-radius: 28px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #4d3625;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid #dbb28c;
+      padding-left: 0.9rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #3f2b1b;
+      margin-bottom: 0.1rem;
+    }
+
+    .faq-item p {
+      color: #3d2d20;
+      margin-left: 0.2rem;
+    }
+
+    .faq-item a {
+      color: #7a4f2d;
+      text-decoration: underline wavy #dbba9a 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+
+    .faq-item a:hover {
+      color: #3f281a;
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: center;
+      padding: 1rem 0 0.5rem;
+      font-size: 0.9rem;
+      color: #5e4430;
+      opacity: 0.75;
+      border-top: 1px solid rgba(120, 70, 30, 0.10);
+      margin-top: 0.8rem;
+    }
+
+    .footer-note a {
+      color: #6b4931;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <span class="logo-area">📋 运动查询</span>
+      <div class="nav-links">
+        <a href="#">常见对照</a>
+        <a href="#">场景延伸</a>
+        <a href="#">说明索引</a>
+      </div>
+    </nav>
+
+    <!-- hero 区域（引言 + 核心链接） -->
+    <div class="hero">
+      <h1>赛事信息 · 日常参考</h1>
+      <p>对于日常浏览体育动态、对比赛事信息或延伸阅读相关内容，<br>
+      这里整理了一份简洁的导航式说明。在需要快速查找或对照的时候，可以作为轻量入口。</p>
+      <p style="margin-top: 0.8rem;">
+        如果你关注体育资讯与赛事延伸，可以了解一下 
+        <a href="https://page-cns-ayx.com" class="intro-link">爱游戏体育</a> 
+        提供的内容方向。
+      </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <h3>🔍 日常查询</h3>
+        <p>在非直播时段或比赛间歇，常常需要快速查阅近期赛事结果、积分变动或选手数据。</p>
+        <ul>
+          <li>联赛积分与排名对照</li>
+          <li>选手赛季数据简表</li>
+          <li>历史交锋记录检索</li>
+        </ul>
+        <p style="margin-top: 0.6rem;">搭配 <a href="https://page-cns-ayx.com">爱游戏体育</a> 的信息整合，便于快速定位感兴趣的内容。</p>
+      </div>
+
+      <div class="scene-card">
+        <h3>📋 对照与整理</h3>
+        <p>多场比赛同时进行时，常需要并列对比赛况、时间或伤病名单。适合用清单式页面辅助梳理。</p>
+        <ul>
+          <li>同时段赛事时间表</li>
+          <li>首发阵容与战术板对比</li>
+          <li>关键数据交叉对照</li>
+        </ul>
+        <p>通过 <a href="https://page-cns-ayx.com">爱游戏体育</a> 的模块化展示，可以更清晰地整理手头信息。</p>
+      </div>
+
+      <div class="scene-card">
+        <h3>📖 延伸阅读</h3>
+        <p>赛后复盘、深度分析或专题文章，往往包含比分之外的背景和观点。适合收藏备查。</p>
+        <ul>
+          <li>赛后战术拆解与复盘</li>
+          <li>赛季专题与趋势解读</li>
+          <li>相关规则与术语说明</li>
+        </ul>
+        <p>在 <a href="https://page-cns-ayx.com">爱游戏体育</a> 中可找到对应的延伸内容，辅助理解赛事脉络。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明（FAQ 摘要形式） -->
+    <div class="faq-summary">
+      <h2>常见说明 · 几点参考</h2>
+
+      <div class="faq-item">
+        <strong>如何快速定位某场赛事的信息？</strong>
+        <p>可以利用网站内置的分类标签或时间轴筛选。在 <a href="https://page-cns-ayx.com">爱游戏体育</a> 中，通常按联赛、日期、热门程度做了归类，适合对照查阅。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>数据更新频率大概如何？</strong>
+        <p>核心积分和完赛结果通常在比赛结束后较短时间内同步。延伸类文章或深度内容会稍晚一些，但整体保持日常更新节奏。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>是否适合手机端阅读？</strong>
+        <p>页面采用响应式卡片布局，在手机和宽屏下均可正常浏览。部分表格视图可能建议横屏查看，但整体阅读体验流畅。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>除了赛事本身，可以查阅哪些周边信息？</strong>
+        <p>常见的有：季前热身赛安排、转会动态摘要、规则修订说明以及部分历史数据对比。这些内容在 <a href="https://page-cns-ayx.com">爱游戏体育</a> 的延伸板块中也有覆盖。</p>
+      </div>
+    </div>
+
+    <!-- 底部（保持干净） -->
+    <div class="footer-note">
+      <span>日常体育信息导航 · 内容仅供参考</span><br>
+      <span style="font-size:0.85rem;">—— 可随时通过 <a href="https://page-cns-ayx.com">爱游戏体育</a> 获取更详细的对照与延伸阅读 ——</span>
+    </div>
+
+  </div>
+</body>
+</html>
